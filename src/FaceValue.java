@@ -15,6 +15,10 @@ public enum FaceValue {
         this.faceValue = value;
     }
     
+    /**
+     * 
+     * @param value the value to change the faceValue to. 
+     */
     public void setFaceValue(int value) {
     	faceValue = value;
     }
