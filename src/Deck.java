@@ -6,14 +6,27 @@ import java.util.*;
  *
  */
 public class Deck { 
-    private ArrayList<Card> deck = new ArrayList<Card>(52);
+    private ArrayList<Card> deck = new ArrayList<Card>();
+    private int numDecks;
     
     public Deck() {
-        for (FaceValue card: FaceValue.values()) {
-            for (Suit suit: Suit.values()) {
-                this.deck.add(new Card(card, suit));
-            }
-        }
+    	this(1);
+    }
+    
+    public Deck(int numDecks) {
+    	this.numDecks = numDecks;
+    	
+    	for(int i = 0; i < numDecks; i++) {
+	        for (FaceValue card: FaceValue.values()) {
+	            for (Suit suit: Suit.values()) {
+	                this.deck.add(new Card(card, suit));
+	            }
+	        }
+    	}
+    }
+    
+    public Deck(Deck other) {
+    	this(other.numDecks);
     }
     
     public void shuffle() {
@@ -21,6 +34,8 @@ public class Deck {
     }
     
     public Card removeCard() {
+    	if(isEmpty())
+    		throw new IndexOutOfBoundsException("Deck is empty.");
         return deck.remove(0);
     }
     
@@ -31,6 +46,7 @@ public class Deck {
     public boolean isEmpty() {
     	return remainingCards() == 0;
     }
+    
     public Iterator<Card> Iterator() {
         return deck.iterator();
     }
