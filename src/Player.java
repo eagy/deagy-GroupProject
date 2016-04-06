@@ -58,6 +58,10 @@ public class Player {
 				|| hand.contains(new Card(FaceValue.ACE, Suit.DIAMONDS))
 				|| hand.contains(new Card(FaceValue.ACE, Suit.CLUBS));
 	}
+	
+	public boolean hasBlackjack() {
+		return hand.
+	}
 	public String toString() {
 		String playerHand = "Player " + playerNumber + ":\n";
 		

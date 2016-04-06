@@ -29,6 +29,10 @@ public class Deck {
     	this(other.numDecks);
     }
     
+    public void addCard(Card theCard) {
+    	deck.add(theCard);
+    }
+    
     public void shuffle() {
         Collections.shuffle(deck);
     }

@@ -37,11 +37,16 @@ public class BlackJack {
 		else {
 			turn = 1;
 			return players.get(turn-1);
-		}
-
-			
+		}		
 	}
 	
+	public void addPlayer(Player player) {
+		players.add(player);
+	}
+	
+	public void removePlayer(int playerNum) {
+		players.remove(playerNum-1);
+	}
 	
 	
 }

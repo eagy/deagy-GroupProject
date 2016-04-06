@@ -2,8 +2,9 @@ import java.util.Iterator;
 
 public class Driver {
 	public static void main(String[] args) {
-		Deck cardDeck = new Deck();
+		Deck cardDeck = new Deck(3);
 		
+		cardDeck.shuffle();
 		cardDeck.shuffle();
 		
 		Iterator<Card> it = cardDeck.Iterator();
