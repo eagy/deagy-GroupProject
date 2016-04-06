@@ -6,17 +6,29 @@ import java.util.ArrayList;
  *
  */
 public class Player {
-	private int handValue;
+	private final int MAXHAND = 21;
+	
+	private int handValue, playerNumber;
 	Deck gameDeck;
 	ArrayList<Card> hand = new ArrayList<>();
 	
 	/**
 	 * 
 	 * @param gameDeck the Deck that the player will be using.
+	 * @param playerNumber the number assigned to said player.
 	 */
 	
-	public Player(Deck gameDeck) {
+	public Player(Deck gameDeck, int playerNumber) {
 		this.gameDeck = gameDeck;
+		this.playerNumber = playerNumber;
+	}
+	
+	/**
+	 * 
+	 * @param gameDeck the Deck that the player will be using.
+	 */
+	public Player(Deck gameDeck) {
+		this(gameDeck, 1);
 	}
 	
 	/**
@@ -27,6 +39,9 @@ public class Player {
 			Card drawCard = gameDeck.removeCard();
 			hand.add(drawCard);
 			handValue += drawCard.getFaceValue().getFaceValue();
+			
+			if(hasAce() && handValue > MAXHAND)
+				handValue =- 10;
 		}
 		catch (Throwable e){
 			System.out.println("Deck is empty.");
@@ -44,12 +59,13 @@ public class Player {
 				|| hand.contains(new Card(FaceValue.ACE, Suit.CLUBS));
 	}
 	public String toString() {
-		StringBuilder printString = new StringBuilder();
+		String playerHand = "Player " + playerNumber + ":\n";
 		
 		for(Card i : hand){
-			printString.append(i.toString() + ", ");
+			playerHand += i.toString() + "\t";
 		}
 		
-		return printString.toString();
+		playerHand += "\nHand Total: " + getHandValue();
+		return playerHand;
 	}
 }
