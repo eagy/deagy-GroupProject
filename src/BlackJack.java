@@ -1,8 +1,7 @@
 import java.util.ArrayList;
 
 public class BlackJack {
-	private int numDecks;
-	private int numPlayers;
+	private int numDecks, numPlayers, turn;
 	private ArrayList<Player> players;
 	private Dealer dealer; 
 	private Deck deck;
@@ -20,6 +19,8 @@ public class BlackJack {
 		this.numDecks = numDecks; 
 		this.numPlayers = numPlayers;
 		
+		turn = 1; 
+		
 		deck = new Deck(numDecks);
 		discard = new Deck();
 		players = new ArrayList<Player>(numPlayers);
@@ -28,7 +29,18 @@ public class BlackJack {
 		}
 	}
 	
+	public Player turn() {
+		if (turn < numPlayers) {
+			turn++;
+			return players.get(turn-2);
+		}
+		else {
+			turn = 1;
+			return players.get(turn-1);
+		}
 
+			
+	}
 	
 	
 	
