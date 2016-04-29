@@ -60,7 +60,7 @@ public class Player {
 	}
 	
 	public boolean hasBlackjack() {
-		return hand.
+		return true;
 	}
 	public String toString() {
 		String playerHand = "Player " + playerNumber + ":\n";
